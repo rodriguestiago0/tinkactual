@@ -15,6 +15,7 @@ const TINK_USER_ID = process.env.TINK_USER_ID || "";
 const TINK_ACTOR_ID = process.env.TINK_ACTOR_ID || "";
 const TINK_ACCOUNT_MAP = process.env.TINK_ACCOUNT_MAP || "";
 const ACTUAL_ACCOUNT_MAP = process.env.ACTUAL_ACCOUNT_MAP || "";
+const CRON_EXPRESSION = process.env.CRON_EXPRESSION || "";
 
 
 function getAppConfigFromEnv() {
@@ -41,7 +42,8 @@ function getAppConfigFromEnv() {
         TINK_ACCOUNT_MAP,
         ACTUAL_ACCOUNT_MAP,
         ACTUAL_SERVER_URL,
-        ACTUAL_SERVER_PASSWORD
+        ACTUAL_SERVER_PASSWORD,
+        CRON_EXPRESSION
     }
 
     // Assert that all required environment variables are set
@@ -63,8 +65,6 @@ function getConf(username) {
         configName: key
     });
     tmp.set("user", key);
-    tmp.set("tink_accounts_map", appConfig.TINK_ACCOUNT_MAPPING)
-    tmp.set("actual_accounts_map", appConfig.ACTUAL_ACCOUNT_MAPPING)
     return tmp;
 }
 

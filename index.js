@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const meow = require("meow");
 const thinkactual = require("./cli.js");
+
 const cli = meow(
     `
   Usage
@@ -40,3 +41,4 @@ const cli = meow(
 );
 
 thinkactual(cli.input[0], cli.flags);
+
