@@ -144,7 +144,7 @@ const getAllTransactions = async (token, startDate) =>  {
             url = url + "pageToken=" + nextPage
         }
         if (startDate != "") {
-            url = url + "bookedDateGte=2024-01-01" //+ dateFns.format(startDate, "yyyy-MM-dd")
+            url = url + "bookedDateGte=" + dateFns.format(startDate, "yyyy-MM-dd")
         }
         bearer = 'Bearer ' + token 
         res = await fetch(url, {
