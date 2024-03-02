@@ -16,6 +16,7 @@ const TINK_ACTOR_ID = process.env.TINK_ACTOR_ID || "";
 const TINK_ACCOUNT_MAP = process.env.TINK_ACCOUNT_MAP || "";
 const ACTUAL_ACCOUNT_MAP = process.env.ACTUAL_ACCOUNT_MAP || "";
 const CRON_EXPRESSION = process.env.CRON_EXPRESSION || "";
+const ACTUAL_SYNC_ID = process.env.ACTUAL_SYNC_ID || "";
 
 
 function getAppConfigFromEnv() {
@@ -43,6 +44,7 @@ function getAppConfigFromEnv() {
         ACTUAL_ACCOUNT_MAP,
         ACTUAL_SERVER_URL,
         ACTUAL_SERVER_PASSWORD,
+        ACTUAL_SYNC_ID,
         CRON_EXPRESSION
     }
 
@@ -65,6 +67,7 @@ function getConf(username) {
         configName: key
     });
     tmp.set("user", key);
+    tmp.set("budget_id", appConfig.ACTUAL_SYNC_ID)
     return tmp;
 }
 

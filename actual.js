@@ -22,14 +22,6 @@ async function initialize(config) {
         });
 
         let id = config.get("budget_id")
-        if (!id) {
-            id = (await inquirer.prompt({
-                name: "budget_id",
-                message: `This is your (${config.get('user')}) first time using this user, what is your budget sync Id? (Can be found in advanced settings on Actual as the 'Sync Id')`,
-            })).budget_id
-            config.set("budget_id", id)
-        }
-
         await actual.downloadBudget(id);
     } catch (e) {
         throw new Error(`Actual Budget Error: ${e.message}`);
@@ -53,7 +45,7 @@ function listAccounts(actualInstance) {
  */
 async function getLastTransactionDate(actualInstance, accountId) {
     const monthAgo = new Date();
-    monthAgo.setMonth(monthAgo.getMonth() - 1);
+    monthAgo.setMonth(monthAgo.getMonth() -3);
 
     const transactions = await actualInstance.getTransactions(accountId, monthAgo, new Date());
 
@@ -74,9 +66,9 @@ async function importTransactions(actualInstance, accountId, transactions) {
         accountId,
         transactions
     );
-    console.log("Imported transactions raw data START:")
-    console.log(transactions)
-    console.log("Actual logs: ", actualResult);
+    console.info("Imported transactions raw data START:")
+    console.debug(transactions)
+    console.info("Actual logs: ", actualResult);
 }
 
 async function getBalance(actualInstance, accountId) {

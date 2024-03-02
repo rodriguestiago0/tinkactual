@@ -23,7 +23,7 @@ const authorization_generate_code = async () => {
         .then((response) => response.json())
         .then((json) => json.access_token)
         .catch((err) => {
-            console.log("error occured", err)
+            console.error("error occured", err)
         });
     return token
 }
@@ -47,7 +47,7 @@ const generate_code = async (token) => {
         .then((response) => response.json())
         .then((json) => json.code)
         .catch((err) => {
-            console.log("error occured", err)
+            console.error("error occured", err)
         });
     return code
 }
@@ -69,7 +69,7 @@ const authorization = async (token) => {
         .then((response) => response.json())
         .then((json) => json.code)
         .catch((err) => {
-            console.log("error occured", err)
+            console.error("error occured", err)
         });
     return authorizationCode
 }
@@ -91,7 +91,7 @@ const authorization_access_code = async (code) => {
         .then((response) => response.json())
         .then((json) => json.access_token)
         .catch((err) => {
-            console.log("error occured", err)
+            console.error("error occured", err)
         });
     return token
 }
@@ -106,7 +106,7 @@ const getBalances = async (token) => {
     })
         .then((response) => response.json())
         .catch((err) => {
-            console.log("error occured", err)
+            console.error("error occured", err)
         });
 }
 
@@ -155,7 +155,7 @@ const getAllTransactions = async (token, startDate) => {
         })
             .then((response) => response.json())
             .catch((err) => {
-                console.log("error occured", err)
+                console.error("error occured", err)
             });
         nextPage = res.nextPageToken
         allTransactions = allTransactions.concat(res.transactions)
