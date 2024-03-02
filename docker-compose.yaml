@@ -1,0 +1,12 @@
+version: '3'
+services:
+  actual_server:
+    container_name: tinkactual
+    image: docker.io/rodriguestiago0/tinkactual
+    ports:
+      - '5006:5006'
+    environment:
+      - PUID=1003
+      - PGID=100
+      - TZ=Europe/Lisbon
+    restart: unless-stopped
