@@ -7,7 +7,7 @@ const appConfig = getAppConfigFromEnv();
 
 init()
 
-var cronExpression = "0 */4 * * *";
+var cronExpression = "0 0 */4 * * *";
 if (appConfig.CRON_EXPRESSION != "") {
     cronExpression = appConfig.CRON_EXPRESSION
 }
