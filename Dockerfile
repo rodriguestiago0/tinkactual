@@ -4,8 +4,7 @@ FROM node:${NODE_VERSION}-alpine AS BUILD_IMAGE
 
 WORKDIR /usr/src/app
 
-COPY package.json .
-COPY package-lock.json .
+COPY package*.json ./
 
 RUN npm install --omit=dev
 RUN npm ci --omit=dev
@@ -24,7 +23,6 @@ ADD package*.json ./
 RUN chmod +x index-cron.js
 
 ENV NODE_ENV production
-
 
 # Run the application.
 CMD node index-cron.js
