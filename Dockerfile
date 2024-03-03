@@ -1,6 +1,6 @@
 ARG NODE_VERSION=20.11.1
 
-FROM node:18-alpine AS BUILD_IMAGE
+FROM node:${NODE_VERSION}-alpine AS BUILD_IMAGE
 
 WORKDIR /usr/src/app
 
@@ -11,12 +11,14 @@ RUN npm ci --omit=dev
 
 COPY . .
 
-FROM node:18-alpine AS RUNNER_IMAGE
+FROM node:${NODE_VERSION}-alpine AS RUNNER_IMAGE
 
 WORKDIR /usr/src/app
 
 COPY --from=BUILD_IMAGE /usr/src/app/node_modules ./node_modules
-COPY . .
+ADD . .
+ADD package*.json ./
+
 
 RUN chmod +x index-cron.js
 
