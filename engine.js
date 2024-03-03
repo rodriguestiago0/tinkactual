@@ -18,7 +18,7 @@ async function importTinkTransactions() {
         );
         if (accountStartDate < startDate) {
             startDate = accountStartDate
-            startDate.setDate(startDate.startDate() -1);
+            startDate.setDate(startDate.getDate() -1);
         }
     };
     console.info("Importing transactions for account from ", startDate)
