@@ -132,7 +132,7 @@ function convertAmount(amount) {
     unscaledValue = amount.value.unscaledValue
     scale = amount.value.scale
     amount = unscaledValue / Math.pow(10, scale)
-    return (amount * 100).toFixed(0);
+    return Math.trunc(amount * 100);
 }
 
 const getAllTransactions = async (token, startDate) => {
