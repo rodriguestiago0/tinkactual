@@ -62,12 +62,12 @@ async function getLastTransactionDate(actualInstance, accountId) {
 
 
 async function importTransactions(actualInstance, accountId, transactions) {
+    console.info("Importing transactions raw data START:")
+    console.debug(transactions)
     const actualResult = await actualInstance.importTransactions(
         accountId,
         transactions
     );
-    console.info("Imported transactions raw data START:")
-    console.debug(transactions)
     console.info("Actual logs: ", actualResult);
 }
 
